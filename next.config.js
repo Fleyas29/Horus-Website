@@ -1,6 +1,10 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true
-};
+// next.config.js
+const isGithubPages = process.env.DEPLOY_ENV === 'GH_PAGES';
 
-module.exports = nextConfig;
+module.exports = {
+  assetPrefix: isGithubPages ? '/horus/' : '',
+  images: {
+    unoptimized: true,
+  },
+  trailingSlash: true,
+};
